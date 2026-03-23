@@ -17,25 +17,37 @@ struct ContentView: View {
                 }
             }
             HStack {
-                Button(action:{
-                    emojiCount -= 1
-                },
-                       label:{
-                    Text("remove card")
-                })
+                remove
                 Spacer()
-                Button(action:{
-                    emojiCount += 1
-                },
-                       label:{
-                    Text("add card")
-                })
+                add
             }
         }
         .padding()
         .foregroundStyle(.orange)
     }
-}
+    var remove: some View{
+        Button{
+            if emojiCount>1{
+                emojiCount -= 1
+            }
+        }
+        label:{
+            Image(systemName: "minus.circle")
+        }
+    }
+    var add:some View{
+        Button{
+            if emojiCount<emojis.count{
+                emojiCount += 1
+            }
+            
+            
+        }
+        label:{
+            Image(systemName: "plus.circle")
+        }
+    }
+    }
 struct CardView :View {
     @State var isFaceup:Bool = true
     var content: String
