@@ -6,9 +6,11 @@
 //
 
 import Foundation
+func createCardContent(for index: Int) -> String {
+    return "A"
+}
 class EmojiMemoryGame{
-    private var model: memoryGame<String> = memoryGame<String>(cards:)
-    memoryGame<String>(numberOfParisOfCards:4), createCardContent : createCardContent)
+    private var model: memoryGame<String> = memoryGame<String>(numberOfParisOfCards:4, createCardContent : createCardContent)
     
     var cards: [memoryGame<String>.Card] {
         model.cards
