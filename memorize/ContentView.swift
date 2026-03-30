@@ -75,6 +75,7 @@ struct CardView :View {
             .opacity(isFaceup ? 1 : 0)
             shape.opacity(isFaceup ? 0 : 1)
         }
+
         .onTapGesture(perform: {
             isFaceup = !isFaceup
         })
