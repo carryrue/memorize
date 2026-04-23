@@ -11,12 +11,9 @@ struct ContentView: View {
     var viewmodel:EmojiMemoryGame
     var body: some View {
         VStack {
-            
-            // ⭐ Theme 名稱
             Text(viewmodel.theme.name)
                 .font(.largeTitle)
             
-            // ⭐ 分數
             Text("Score: \(viewmodel.score)")
                 .font(.title)
                 .foregroundColor(.red)
@@ -34,7 +31,6 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                // ⭐ 新遊戲按鈕
                 Button {
                     viewmodel.newGame()
                 } label: {

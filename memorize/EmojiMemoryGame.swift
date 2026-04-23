@@ -16,25 +16,22 @@ class EmojiMemoryGame {
     private(set) var themePool: ThemePool
     private(set) var theme: Theme
     
-    // MARK: init
     init() {
-        themePool = EmojiMemoryGame.createThemePool()
-        
-        let selectedTheme = themePool.themes.randomElement() ?? themePool.themes[0]
-        
+        let pool = EmojiMemoryGame.createThemePool()
+        let selectedTheme = pool.themes.randomElement() ?? pool.themes[0]
+        themePool = pool
         theme = selectedTheme
         model = EmojiMemoryGame.createMemoryGame(with: selectedTheme)
     }
     
-    // MARK: 建立 ThemePool
     private static func createThemePool() -> ThemePool {
         var pool = ThemePool()
         
         pool.addTheme(Theme(
-            name: "Animals",
+            name: "ENGLISH",
             color: .orange,
             numberOfPairs: 6,
-            items: ["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼"]
+            items: ["A","B","C","D","E","F","G"]
         ))
         
         pool.addTheme(Theme(
@@ -54,7 +51,6 @@ class EmojiMemoryGame {
         return pool
     }
     
-    // MARK: 建立遊戲
     private static func createMemoryGame(with theme: Theme) -> memoryGame<String> {
         
         let shuffled = theme.items.shuffled()
@@ -67,7 +63,6 @@ class EmojiMemoryGame {
         )
     }
     
-    // MARK: Intent
     
     var cards: [memoryGame<String>.Card] {
         model.cards
@@ -85,7 +80,6 @@ class EmojiMemoryGame {
         model.shuffle()
     }
     
-    // ⭐ 新遊戲
     func newGame() {
         theme = themePool.themes.randomElement()!
         model = EmojiMemoryGame.createMemoryGame(with: theme)

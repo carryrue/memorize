@@ -25,6 +25,7 @@ struct memoryGame<CardContent> where CardContent: Equatable{
         if let chosenIndex = index(of: card) {
             
             if let lastIndex = lastFaceUpIndex {
+                if lastIndex == chosenIndex { return }
                 
                 if cards[lastIndex].content == cards[chosenIndex].content {
                     cards[chosenIndex].ismatched = true
@@ -59,7 +60,7 @@ struct memoryGame<CardContent> where CardContent: Equatable{
                 return i
             }
         }
-        return 0
+        return nil
     }
     mutating func shuffle(){
         cards.shuffle()
